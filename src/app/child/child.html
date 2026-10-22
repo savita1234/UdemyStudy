@@ -1,0 +1,9 @@
+<p>child works!</p>
+<p>message from parent: {{ message }}</p>
+<button (click)="sendMessage()">click this button</button>
+<!-- {{ Users | json }} -->
+<ul>
+    <li *ngFor="let user of Users">
+        {{user.name}}
+    </li>
+</ul>

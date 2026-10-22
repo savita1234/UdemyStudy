@@ -1,4 +1,10 @@
-<p>case1 works!</p>
+
+
+<style>
+    .success{
+        color:red;
+    }
+</style><p>case1 works!</p>
 <!-- interpolation - one way data binding.sending data ts to html. -->
 {{ name }} {{ surname }} {{ data.age }} {{ data.gender }}
 
@@ -10,4 +16,42 @@
 <!-- two way data bindin. send data from component to html.then html to compo -->
 
 <label>Enter Your name</label>
-<input type=""text
+<input type="text" [(ngModel)]="username" />
+{{ username }}
+<p *ngIf="age >= 18">
+    you are mature
+</p>
+<p *ngIf="age < 18">
+    you are immature
+</p>
+<ul>
+    <li *ngFor="let gro of grocery">{{ gro }}
+
+    </li>
+</ul>
+<p [ngClass]="isSuccess">my self Saviiii</p>
+<p [ngStyle]="{color:isSuccess === 'success' ? 'green' : 'red'}">my self ddedded</p>
+<div [ngSwitch]="selectedTech">
+    <p *ngSwitchCase="'java'">you selected java</p>
+     <p *ngSwitchCase="'Php'">you selected Php</p>
+      <p *ngSwitchCase="'angular'">you selected angular</p>
+</div>
+<p>Text Pipes</p>
+{{name | uppercase}}
+{{name | lowercase}}
+{{name | titlecase}}
+<p>number pipes</p>
+{{ numberValue | number: '1.2-2'}}
+<p>1 - one digit before decimal</p>
+<p>2- minimum digit after decimal</p>
+<p>2- maximum digit after decimal</p>
+{{ currencyValue | currency : 'INR'}}
+<p>slicing</p>
+{{name | slice : 0:8}}
+<p>json pipe</p>
+{{ data | json}}
+<ul>
+    <li *ngFor="let item of items">{{ item }}
+
+    </li>
+</ul>
