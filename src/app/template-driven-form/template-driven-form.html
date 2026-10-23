@@ -1,11 +1,45 @@
 <p>Template Driven Form</p>
-<form #registration="ngForm">
+<form #registration="ngForm" (ngSubmit)="submitForm(registration)">
+    <p>
     <label>Enter Your Email</label>
-    <input type="text">
+    <input type="email" name="email" id="email" ngModel #email="ngModel" required email>
+    @if(email.invalid && email.touched){
+        @if(email.hasError('required')){
+            <p>email is Required</p>
+        }
+        @if(email.hasError('email')){
+            <p>Please enter a valid email.</p>
+        }
+    }
+    </p>
+    <p>
      <label>Enter Your Name</label>
-    <input type="text">
+    <input type="text" name="username" required ngModel #username="ngModel" minlength="5" pattern="^[a-zA-Z0-9_]+$">
+    @if(username.invalid && username.touched){
+        @if(username.hasError('required')){
+            <p>username is required.</p>
+        }
+        @if(username.hasError('minlength')){
+            <p>Atleast 5 character is required.</p>
+        }
+        @if(username.hasError('pattern')){
+            <p> Username can only contain letters, numbers, and underscores.</p>
+        }
+    }
+    </p>
+    <p>
  <label>Enter Your Number</label>
-    <input type="text">
-    <input type="submit" value="submit">
+    <input type="number" name="mobile" required ngModel #mobile="ngModel"  pattern="^[0-9]+$">
+    @if(mobile.invalid && mobile.touched){
+        @if(mobile.hasError('required')){
+            <p>Mobile Number is required.</p>
+        }
+        @if(mobile.hasError('pattern')){
+            <p>Mobile Number can only contain numbers.</p>
+        }
+       
+    }
+    </p>
+    <input type="submit" value="submit" [disabled]="registration.invalid">
 
 </form>

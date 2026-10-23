@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgControlStatusGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template-driven-form',
@@ -9,5 +9,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class TemplateDrivenForm {
   name = "savita"
+  submitForm(form: NgForm){
+    console.log(form.value)
+  }
 
 }
